@@ -1,98 +1,298 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pariram S - Portfolio</title>
-    <style>
-        /* Add your custom styles here */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            max-width: 960px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        header h1 {
-            font-size: 2.5rem;
-            color: #333;
-        }
-        section {
-            margin-bottom: 20px;
-        }
-        .project {
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-left: 5px solid #007bff;
-        }
-        .project h3 {
-            margin-top: 0;
-            font-size: 1.5rem;
-            color: #007bff;
-        }
-        .project p {
-            margin-bottom: 0;
-        }
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px 0;
-            background-color: #333;
-            color: #fff;
-            font-size: 0.8rem;
-        }
-    </style>
+	<title>Pariram s - Porfolio </title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Pariram S</h1>
-            <p>Java / AWS Developer</p>
-        </header>
 
-        <section>
-            <h2>About Me</h2>
-            <p>I'm a Java and AWS developer based in Bangalore, Karnataka, India. I have experience in building microservices, integrating systems, and creating scalable applications on the cloud.</p>
-        </section>
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+		<!-- Intro -->
+		<section class="intro">
+			<header>
+				<h1>Pariram S</h1>
+				<p>Software Developer</p>
+				<ul class="actions">
+					<li><a href="#experience" class="arrow down scrolly"><span class="label">Next</span></a></li>
+				</ul>
+			</header>
+			<div class="content">
+				<span class="image fill" data-position="center"><img src="images/banner.jpg"
+						alt="banner" /></span>
+			</div>
+		</section>
 
-        <section>
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>Chess Game Project</h3>
-                <p>Developed a chess game using React with basic functionalities and valid piece movements.</p>
-            </div>
-            <div class="project">
-                <h3>RFID Integration Project</h3>
-                <p>Integrated an RFID scanner with an Employee Management System using Java, Python, and Arduino.</p>
-            </div>
-            <!-- Add more projects here -->
-        </section>
+		<!-- Section - Experience -->
+		<section id="experience">
+			<header>
+				<h2>Experience</h2>
+				<ul class="actions">
+					<li><a href="#wrapper" class="arrow up scrolly"><span class="label">Previous</span></a></li>
+				</ul>
+				<ul class="actions">
+					<li><a href="#projects" class="arrow down scrolly"><span class="label">Next</span></a></li>
+				</ul>
+			</header>
+			<div class="content">
+				<!-- Experience - Software Developer M2 -->
+				<p><strong><i class="fas fa-briefcase"></i> Software Developer M2</strong><br />
+					<strong>Symphony Talent</strong><br />
+					May '23 — Present<br />
+					Bangalore, India
+				</p>
+				<ul class="experience-details">
+					<li><i class="fas fa-check-circle"></i> Asynchronous File Processing Pipeline Implementation:
+						Implemented application to download compressed encrypted large files coming via network by
+						decrypting, decompressing and moving files to S3 (optimized using multipart approach
+						asynchronously) each in different locations by event based approach involving AWS Lambda, Amazon
+						SQS, Amazon S3.</li>
+					<li><i class="fas fa-check-circle"></i> Robust API Development with Stringent Security and
+						Scalability: Crafting an API, stringent authentication and format checks were ensured, handling
+						up to 10MB requests. Data processing was securely executed, guarded by AWS API Gateway, WAF, and
+						load balancer, thwarting threats like DDoS SQL injection etc. Proper load management prevented
+						overloading internal legacy systems, ensuring smooth operation. Data was seamlessly
+						orchestrated, stored in S3 with respect to tenant, and ETL logic executed asynchronously.
+						Protected by AWS services, security and scalability were maintained. Performance was optimized
+						through dynamic configuration and caching, eliminating the need for code redeployment. With
+						robust security, efficient load management, optimized performance, loose coupling, and elastic
+						scalability, the system stood resilient in the face of diverse challenges.</li>
+					<li><i class="fas fa-check-circle"></i> Tech stack: Problem Solving, Core Java, Data Structures,
+						Amazon Web Services (AWS), Agile Software Development, High-Level Design, Low-Level Design,
+						Microservices, ActiveMQ, Hibernate, MuleSoft, Git, SQL, Graylog, New Relic, REST APIs, Jenkins
+					</li>
+				</ul>
 
-        <section>
-            <h2>Contact Me</h2>
-            <p>Email: pari.pariram.ram@gmail.com<br>
-               LinkedIn: <a href="https://www.linkedin.com/in/your-linkedin-profile">LinkedIn Profile</a><br>
-               GitHub: <a href="https://github.com/your-github-profile">GitHub Profile</a><br>
-               Phone: 9944600249
+				<!-- Experience - Software Developer M1 -->
+				<p><strong><i class="fas fa-briefcase"></i> Software Developer M1</strong><br />
+					<strong>Symphony Talent</strong><br />
+					May '21 — May '23<br />
+					Bangalore, India
+				</p>
+				<ul class="experience-details">
+					<li><i class="fas fa-check-circle"></i> Worked on multiple projects which include integration of
+						multiple third-party and open-source APIs (Rest and Soap) with different Java technologies
+						following SDLC, CICD.</li>
+					<li><i class="fas fa-check-circle"></i> Custom Integration Projects: Actively contributed in
+						projects to implement customizable integrations to synchronize Candidate, Job, Application data
+						between ATS (Greenhouse, Workday) and Smashfly CRM for multiple clients in real time.</li>
+					<li><i class="fas fa-check-circle"></i> Development of Event-Driven Middleware Framework: Built an
+						event driven, client generic, Asynchronous, loosely coupled MuleSoft middleware framework to
+						process, transform data from different third-party APIs (Kenexa, workday, Smart recruiter) into
+						Smashfly CRM format (configurable) batchwise using message pipelines with proper retry mechanism
+						for failed messages.</li>
+					<li><i class="fas fa-check-circle"></i> Implementation of Data Distribution Processor: Implemented a
+						common processor acting as a router to distribute data to different standalone applications
+						using Amazon SQS and Active MQ queues.</li>
+					<li><i class="fas fa-check-circle"></i> Enhancing Security and Authentication: Introduced auth token
+						implementation between internal APIs to improve security.</li>
+					<li><i class="fas fa-check-circle"></i> Implementation of Alert/Notification: Implemented an
+						alert/notification feature to notify bugs/summary of a product in live environment.</li>
+				</ul>
+
+				<!-- Experience - Software Developer Intern -->
+				<p><strong><i class="fas fa-briefcase"></i> Software Developer Intern</strong><br />
+					<strong>Symphony Talent</strong><br />
+					Mar '21 — May '21<br />
+					Bangalore, India
+				</p>
+				<ul class="experience-details">
+					<li><i class="fas fa-check-circle"></i> Developed an application to pull data from Gmail using Gmail
+						APIs (Auth flow), persist, analyse data and display the analytics to user in a dashboard.</li>
+					<li><i class="fas fa-check-circle"></i> Tech stack: Java, Jboss fuse, Angular js, JDBC</li>
+				</ul>
+			</div>
+		</section>
+
+
+		<!-- Section - Projects -->
+		<section id="projects">
+			<header>
+				<h2>Projects</h2>
+				<ul class="actions">
+					<li><a href="#experience" class="arrow up scrolly"><span class="label">Previous</span></a></li>
+				</ul>
+				<ul class="actions">
+					<li><a href="#skills" class="arrow down scrolly"><span class="label">Next</span></a></li>
+				</ul>
+			</header>
+			<div class="content">
+				<!-- Chess game -->
+				<p><strong>Chess game</strong><br />
+					<a href="Link">Link</a>
+				</p>
+				<ul class="feature-icons">
+					<li class="icon solid fa-laptop">Technologies Used: React, JavaScript</li>
+				</ul>
+				<p>Description: Developed a chess game application with basic functionalities. Implemented piece
+					movement logic ensuring only valid moves based on chess rules.</p>
+				<p>Features: Interactive board, real-time piece movement validation, and user-friendly interface.</p>
+
+				<!-- To Do App -->
+				<p><strong>To Do App</strong><br />
+					<a href="Link">Link</a>
+				</p>
+				<ul class="feature-icons">
+					<li class="icon solid fa-laptop">Technologies Used: Flutter</li>
+				</ul>
+				<p>Description: Developed a task management application for Android using Flutter. The app features a
+					user-friendly interface that allows users to efficiently create, edit, and delete tasks, set due
+					dates, and mark tasks as completed.</p>
+				<p>Features: Task Creation: Add new tasks with optional due dates, priorities, and categories, Task
+					Management: Edit existing tasks, mark tasks as completed, and delete unwanted tasks.</p>
+
+				<!-- Smart EMS: Employee Management System with RFID Integration -->
+				<p><strong>Smart EMS: Employee Management System with RFID Integration</strong></p>
+				<ul class="feature-icons">
+					<li class="icon solid fa-laptop">Technologies Used: Java, Python, HTML, CSS, JavaScript, Servlet,
+						MySQL, Arduino</li>
+				</ul>
+				<p>Description: Integrated an RFID scanner with an employee management system website using Arduino.
+					This system enables seamless employee tracking and management through RFID technology.</p>
+				<p>Features: RFID Integration: Enabled real-time employee identification and tracking, Web Interface:
+					Developed a user-friendly web interface for managing employee data.</p>
+
+				<!-- Shoppee : Shopping Website Project -->
+				<p><strong>Shoppee : Shopping Website Project</strong></p>
+				<ul class="feature-icons">
+					<li class="icon solid fa-laptop">Technologies Used: HTML, CSS, JavaScript, JSP, Java Servlets, JDBC
+					</li>
+				</ul>
+				<p>Description: Developed a comprehensive shopping website. The project involved creating an interactive
+					and responsive frontend with HTML, CSS, JavaScript, and JSP, and a robust backend with Java Servlets
+					and JDBC.</p>
+
+				<!-- Voice controlled smart home -->
+				<p><strong>Voice controlled smart home</strong></p>
+				<ul class="feature-icons">
+					<li class="icon solid fa-laptop">Technologies Used: NodeMCU Microcontroller, Google Voice, IFTTT
+					</li>
+				</ul>
+				<p>Description: Developed a home automation system to assist disabled individuals by enabling remote
+					control of home appliances using voice commands. Utilized NodeMCU microcontroller for device
+					control, Google Voice for input, and IFTTT for webhook integration.</p>
+				<p>Features: Voice Control: Enabled voice-activated control of lights, fans, and other appliances using
+					Google Voice.</p>
+
+				<!-- Life saver: Wireless Monitoring System for Heart Patients -->
+				<p><strong>Life saver: Wireless Monitoring System for Heart Patients</strong></p>
+				<ul class="feature-icons">
+					<li class="icon solid fa-laptop">Technologies Used: Arduino, Transceiver Module</li>
+				</ul>
+				<p>Description: Developed a wireless monitoring system to assist heart patients. The system uses an
+					Arduino attached with a transceiver module to enable wireless communication and monitoring.</p>
+				<p>Features: Wireless Communication: Utilized a transceiver module with Arduino to ensure reliable and
+					efficient wireless communication, Health Monitoring: Designed to help heart patients by providing
+					remote monitoring capabilities, enhancing safety and reducing physical strain.</p>
+			</div>
+		</section>
+
+
+		<!-- Section - Skills -->
+		<section id="skills">
+			<header>
+				<h2>Skills</h2>
+				<ul class="actions">
+					<li><a href="#projects" class="arrow up scrolly"><span class="label">Previous</span></a></li>
+				</ul>
+				<ul class="actions">
+					<li><a href="#certifications" class="arrow down scrolly"><span class="label">Next</span></a></li>
+				</ul>
+			</header>
+			<div class="content">
+				<p><strong>Primary Programming Languages</strong><br />
+					<i class="fab fa-java"></i> Core Java, <i class="fab fa-python"></i> Python
+				</p>
+				<p><strong>Technical Skills</strong><br />
+					<i class="fas fa-sitemap"></i> Data Structures, Problem Solving, High Level Design, Low Level Design
+				</p>
+				<p><strong>Secondary Programming Languages</strong><br />
+					<i class="fab fa-js"></i> JavaScript (Programming Language), <i class="fab fa-angular"></i> Angular
+					(Web Framework), <i class="fab fa-flutter"></i> Flutter, <i class="fab fa-react"></i> React
+				</p>
+				<p><strong>Cloud Services</strong><br />
+					<i class="fab fa-aws"></i> Amazon Web Services (AWS)
+				</p>
+				<p><strong>Microservices and Integration</strong><br />
+					<i class="fas fa-microchip"></i> Microservices, <i class="fas fa-camelcase"></i> Apache Camel, <i
+						class="fab fa-microsoft"></i> MuleSoft, <i class="fas fa-layer-group"></i> JBoss, <i
+						class="fab fa-spring"></i> Spring Boot
+				</p>
+				<p><strong>Database and SQL</strong><br />
+					<i class="fas fa-database"></i> SQL, <i class="fab fa-hibernate"></i> Hibernate
+				</p>
+			</div>
+		</section>
+		<!-- Section - Certifications -->
+		<section id="certifications">
+			<header>
+				<h2>Certifications</h2>
+				<ul class="actions">
+					<li><a href="#skills" class="arrow up scrolly"><span class="label">Previous</span></a></li>
+				</ul>
+				<ul class="actions">
+					<li><a href="#contact" class="arrow down scrolly"><span class="label">Next</span></a></li>
+				</ul>
+			</header>
+			<div class="content">
+				<p><strong>AWS Cloud Practitioner</strong></p>
+				<p><strong>Java and Spring framework using Spring Boot</strong></p>
+				<p><strong>Data Structures and Algorithms</strong></p>
+				<p><strong>GitHub Copilot Fundamentals: AI Paired</strong></p>
+				<p><strong>Agile Scrum Master</strong></p>
+				<p><strong>Docker Fundamentals</strong></p>
+				<p><strong>XML and XSD</strong></p>
+				<p><strong>Hashing in Java</strong></p>
+			</div>
+		</section>
+
+<!-- Get in touch -->
+<section id="contact">
+    <header>
+        <h2>Get in touch</h2>
+		<ul class="actions">
+			<li><a href="#wrapper" class="arrow up scrolly"><span class="label">Previous</span></a></li>
+		</ul>
+    </header>
+    <div class="content">
+        <div class="contact-info">
+            <p>
+                <strong><i class="icon solid fa-envelope"></i> Email</strong><br />
+                <a href="mailto:pari.pariram.ram@gmail.com">pari.pariram.ram@gmail.com</a>
             </p>
-        </section>
+            <p>
+                <strong><i class="icon solid fa-phone"></i> Phone</strong><br />
+                <a href="tel:+919944600249">+91 9944600249</a>
+            </p>
+            <p>
+                <strong><i class="icon brands fa-linkedin"></i> LinkedIn</strong><br />
+                <a href="https://www.linkedin.com/in/pariram-s-a2367a160">Pariram S</a>
+            </p>
+            <p>
+                <strong><i class="icon brands fa-github"></i> GitHub</strong><br />
+                <a href="https://github.com/Pariram140">Pariram140</a>
+            </p>
+        </div>
     </div>
+</section>
 
-    <footer>
-        &copy; 2024 Pariram S. All rights reserved.
-    </footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
 </body>
+
 </html>

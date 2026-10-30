@@ -22,16 +22,16 @@ export const caseStudies: CaseStudy[] = [
     slug: 'asynchronous-file-processing',
     title: 'Asynchronous File Processing',
     summary:
-      'An event-driven application for processing large encrypted files and transferring them to S3 with asynchronous multipart uploads.',
+      'An event-driven pipeline that changed compressed, encrypted file access from scheduled delivery to near-real-time S3 transfer.',
     technologies: ['Java', 'AWS Lambda', 'Amazon SQS', 'Amazon S3'],
     context:
-      'I implemented an application to handle large, compressed and encrypted files arriving over a network. The processed files were moved into different S3 locations.',
+      'I modernized a legacy scheduled pipeline that handled large, compressed, encrypted files arriving over a network and moved the processed files to their S3 destinations.',
     challenge:
-      'The application needed to download each file, decrypt it, decompress it, and transfer it to the appropriate S3 location. The original description emphasizes both large files and asynchronous handling.',
+      'Files could remain unavailable for up to 24 hours while the scheduled process waited to run. I needed to make them available much sooner while preserving the required download, decrypt, decompress, and transfer stages.',
     approach:
-      'The published project description identifies an event-based approach involving AWS Lambda, Amazon SQS, and Amazon S3. File transfer used an asynchronous multipart approach.',
+      'I changed the scheduled workflow to event-driven processing with AWS Lambda, Amazon SQS, and Amazon S3. After arrival, the pipeline downloads, decrypts, and decompresses each file, then transfers it with asynchronous multipart uploads.',
     flowDescription:
-      'A process-level view of the file handling described in the original portfolio. AWS Lambda, Amazon SQS, and Amazon S3 are named as part of the event-based approach; the source does not map each service to a specific step.',
+      'Conceptual process flow from file arrival through processing to S3 transfer. It shows the file journey rather than a detailed deployment topology.',
     flowNodes: [
       ['Network file', 'source'],
       ['Download and', 'decrypt'],
@@ -41,42 +41,43 @@ export const caseStudies: CaseStudy[] = [
     flowSteps: [
       {
         title: 'Receive the file',
-        description: 'A large, compressed and encrypted file arrives from a network source.',
+        description: 'A large, compressed, encrypted file arrives over the network.',
       },
       {
         title: 'Download and decrypt',
-        description: 'The application downloads the file and decrypts it before continuing.',
+        description: 'I download each file and decrypt it before continuing.',
       },
       {
         title: 'Decompress',
-        description: 'The compressed file is decompressed as part of the processing sequence.',
+        description: 'I decompress each file before transferring it.',
       },
       {
         title: 'Transfer to S3',
         description:
-          'The file is moved to its S3 location using asynchronous multipart handling. The description notes that files go to different locations.',
+          'I transfer the processed file to its S3 destination using asynchronous multipart handling; different files can go to different S3 locations.',
       },
     ],
     engineeringDetails: [
-      'The event-based solution involved AWS Lambda, Amazon SQS, and Amazon S3.',
-      'Multipart handling was used for the asynchronous file transfer.',
-      'Files were placed in different S3 locations.',
+      'I used AWS Lambda, Amazon SQS, and Amazon S3 for event-driven processing.',
+      'I used asynchronous multipart uploads for file transfer.',
+      'I routed processed files to different S3 locations.',
+      'The change reduced file-access delays from up to 24 hours to near-instant access.',
     ],
   },
   {
     slug: 'secure-api-processing',
     title: 'Secure API Processing',
     summary:
-      'A guarded API workflow for requests up to 10 MB, tenant-aware S3 storage, and asynchronous ETL processing.',
+      'A secure API for tenant-aware data storage, dynamic mapping, and asynchronous ETL processing.',
     technologies: ['Java', 'AWS API Gateway', 'AWS WAF', 'Amazon S3'],
     context:
-      'I worked on an API that handled requests up to 10 MB, stored data in S3 with respect to tenant, and ran ETL logic asynchronously.',
+      'I developed a scalable API that stored tenant data in S3 and ran ETL asynchronously while returning synchronous responses to clients.',
     challenge:
-      'The API required strict authentication and format checks. Load also had to be managed so internal legacy systems were not overloaded.',
+      'I designed the workflow to validate and authenticate requests, protect internal legacy systems from excess load, and keep long-running ETL work off the synchronous client path.',
     approach:
-      'The original description names AWS API Gateway, WAF, and a load balancer among the protections around processing. Data was stored by tenant in S3, with ETL performed asynchronously. Dynamic configuration and caching were used without requiring code redeployment.',
+      'I used AWS API Gateway, WAF, and load balancing to protect and manage traffic. The API stored data by tenant in S3 and ran ETL asynchronously. Dynamic mapping, configuration, and caching let me adjust behavior without redeploying code.',
     flowDescription:
-      'This is a conceptual request path based on the original portfolio description. It names the checks, traffic controls, tenant-aware storage, and asynchronous ETL, but does not specify the exact service-by-service request order.',
+      'Conceptual API workflow showing request validation, traffic protection, tenant-aware storage, and asynchronous ETL. It is a process view rather than a detailed deployment topology.',
     flowNodes: [
       ['API request', 'up to 10 MB'],
       ['Authentication', 'and format checks'],
@@ -87,30 +88,30 @@ export const caseStudies: CaseStudy[] = [
     flowSteps: [
       {
         title: 'Accept an API request',
-        description: 'The original project summary states that the API handled requests up to 10 MB.',
+        description: 'I designed this API flow to handle request payloads up to 10 MB.',
       },
       {
         title: 'Check authentication and format',
-        description: 'Requests were subject to strict authentication and format checks.',
+        description: 'I validate requests for authentication and format.',
       },
       {
         title: 'Protect and manage traffic',
         description:
-          'AWS API Gateway, WAF, and a load balancer guarded the workflow. Load management was intended to avoid overloading internal legacy systems.',
+          'I used AWS API Gateway, WAF, and load balancing to control traffic and protect internal legacy systems from overload.',
       },
       {
         title: 'Store data by tenant',
-        description: 'Processed data was stored in S3 with respect to tenant.',
+        description: 'I organized processed data in S3 by tenant.',
       },
       {
         title: 'Run ETL asynchronously',
-        description: 'ETL logic ran asynchronously after the data processing flow.',
+        description: 'I ran ETL asynchronously after request processing.',
       },
     ],
     engineeringDetails: [
-      'The original description identifies DDoS and SQL injection among the threats addressed by the AWS protections.',
-      'Dynamic configuration and caching were used to tune behavior without a code redeployment.',
-      'The source describes the intent and components, but does not publish latency, throughput, or availability measurements.',
+      'I used AWS protections to address DDoS and SQL injection threats.',
+      'I used dynamic configuration and caching so behavior could be tuned without a code redeployment.',
+      'The API handled millions of requests, with job-status and failure reporting to support operational monitoring. I also helped reduce client market-to-live time from months to days.',
     ],
   },
   {
@@ -120,13 +121,13 @@ export const caseStudies: CaseStudy[] = [
       'A configurable MuleSoft integration framework that transforms third-party API data and routes messages with retry handling.',
     technologies: ['Java', 'MuleSoft', 'Amazon SQS', 'ActiveMQ'],
     context:
-      'I contributed to integrations that synchronized candidate, job, and application data between applicant tracking systems and Smashfly CRM for multiple clients, including real-time integrations.',
+      'I built integrations that synchronized candidate, job, and application data in real time between applicant tracking systems and Smashfly CRM for multiple clients.',
     challenge:
-      'Each client could have different third-party APIs and data needs. The integration work needed to transform data into the CRM format and handle failed messages in the processing pipeline.',
+      'Each client used different third-party APIs and data formats. I needed to map that data to the CRM format and handle failed messages without tightly coupling each integration.',
     approach:
-      'I built an asynchronous, loosely coupled MuleSoft middleware framework described as client generic. It transformed source data into a configurable Smashfly CRM format, processed messages in batches with retries, and used a common processor to route data to standalone applications through Amazon SQS and ActiveMQ.',
+      'I built a client-generic, loosely coupled MuleSoft middleware framework. It transformed source data into a configurable Smashfly CRM format, processed messages asynchronously in batches with retries, and routed them through a common processor using Amazon SQS and ActiveMQ.',
     flowDescription:
-      'The sequence combines the transformation and routing stages described for the middleware framework. The original source names the example APIs and queue technologies in its written project details.',
+      'Conceptual integration flow from third-party APIs through data transformation and queued routing to destination applications. It shows the process rather than a detailed deployment topology.',
     flowNodes: [
       ['Third-party', 'APIs'],
       ['MuleSoft', 'data transform'],
@@ -138,32 +139,34 @@ export const caseStudies: CaseStudy[] = [
       {
         title: 'Read from external APIs',
         description:
-          'The portfolio names Kenexa, Workday, and SmartRecruiters among the third-party APIs, and Greenhouse and Workday in custom ATS integrations.',
+          'I connected to third-party APIs including Kenexa, Workday, and SmartRecruiters, and delivered custom ATS integrations for platforms including Greenhouse and Workday.',
       },
       {
         title: 'Transform the data',
         description:
-          'MuleSoft middleware transformed source data into a configurable Smashfly CRM format.',
+          'I used MuleSoft to transform source data into a configurable Smashfly CRM format.',
       },
       {
         title: 'Process messages in batches',
         description:
-          'The asynchronous message pipelines processed data batchwise and included a retry mechanism for failed messages.',
+          'I processed messages asynchronously in batches and retried failed messages.',
       },
       {
         title: 'Route through queues',
         description:
-          'A common distribution processor routed data using Amazon SQS and ActiveMQ queues.',
+          'I routed data through a common distribution processor using Amazon SQS and ActiveMQ.',
       },
       {
         title: 'Deliver to destination applications',
-        description: 'The routing processor distributed data to standalone applications.',
+        description: 'I delivered the routed data to standalone applications.',
       },
     ],
     engineeringDetails: [
-      'The framework was described as client generic, asynchronous, and loosely coupled.',
-      'The custom integrations synchronized candidate, job, and application records between ATS platforms and Smashfly CRM.',
-      'The source also mentions token authentication between internal APIs as a related security contribution.',
+      'I designed the framework to be client-generic, asynchronous, and loosely coupled.',
+      'I synchronized candidate, job, and application records between ATS platforms and Smashfly CRM.',
+      'I also implemented token authentication between internal APIs used by integration services.',
+      'In related FastConnect ingestion work, I consolidated API calls and reduced HTTP overhead; candidate ingestion increased 50% and application ingestion increased 300%.',
+      'I added integration logging and monitoring, and reduced client market-to-live time from months to days.',
     ],
   },
 ];

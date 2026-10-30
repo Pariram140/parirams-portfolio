@@ -1,6 +1,7 @@
 ---
 import SiteHeader from '../components/SiteHeader.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { experience } from '../data/experience';
 
 const focusAreas = ['Cloud systems', 'API design', 'Event-driven integration'];
 ---
@@ -57,11 +58,25 @@ const focusAreas = ['Cloud systems', 'API design', 'Event-driven integration'];
           <p class="section-kicker">02 / Experience</p>
           <h2 id="experience-title">Building systems that work together.</h2>
         </div>
-        <div>
-          <p class="section-copy">
-            Experience across asynchronous file processing, event-driven integrations, and secure
-            API workflows. The detailed career timeline will follow in the next content story.
-          </p>
+        <div class="experience-list">
+          {experience.map((item) => (
+            <article class="experience-card">
+              <div class="experience-card-header">
+                <div>
+                  <h3>{item.role}</h3>
+                  <p class="experience-company">{item.company}</p>
+                  {item.current && <span class="current-role">Current role</span>}
+                </div>
+                <p class="experience-period">{item.period}</p>
+              </div>
+              <p class="experience-location">{item.location}</p>
+              {item.highlights.length > 0 && (
+                <ul class="experience-highlights">
+                  {item.highlights.map((highlight) => <li>{highlight}</li>)}
+                </ul>
+              )}
+            </article>
+          ))}
         </div>
       </section>
 

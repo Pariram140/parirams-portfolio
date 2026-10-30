@@ -1,0 +1,65 @@
+---
+import ArchitectureDiagram from '../../components/ArchitectureDiagram.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { caseStudies } from '../../data/case-studies';
+
+export function getStaticPaths() {
+  return caseStudies.map((study) => ({ params: { slug: study.slug }, props: { study } }));
+}
+
+const { study } = Astro.props;
+const homeUrl = `${import.meta.env.BASE_URL}#work`;
+---
+
+<BaseLayout title={`${study.title} — Pariram S`} description={study.summary}>
+  <div id="top" class="wrap">
+    <SiteHeader />
+    <main id="main-content" class="case-study-main">
+      <a class="case-study-breadcrumb" href={homeUrl}>← Selected work</a>
+      <header class="case-study-hero">
+        <p class="section-kicker">Case study</p>
+        <h1>{study.title}</h1>
+        <p class="case-study-summary">{study.summary}</p>
+        <ul class="project-technologies" aria-label={`Technologies for ${study.title}`}>
+          {study.technologies.map((technology) => <li>{technology}</li>)}
+        </ul>
+      </header>
+
+      <div class="case-study-content">
+        <section class="case-study-section" aria-labelledby="overview-title">
+          <h2 id="overview-title">Overview</h2>
+          <p>{study.overview}</p>
+        </section>
+
+        <section class="case-study-section" aria-labelledby="flow-title">
+          <h2 id="flow-title">Architecture flow</h2>
+          <p>{study.flowDescription}</p>
+          <ArchitectureDiagram
+            id={study.slug}
+            title={`${study.title} process flow`}
+            description={study.flowDescription}
+            nodes={study.flowNodes}
+          />
+        </section>
+
+        <section class="case-study-section" aria-labelledby="details-title">
+          <h2 id="details-title">What the public source describes</h2>
+          <ul class="case-study-facts">
+            {study.sourceFacts.map((fact) => <li>{fact}</li>)}
+          </ul>
+          <p class="case-study-source-note">
+            This summary uses only information already published in the portfolio repository. It
+            omits unverified implementation details, metrics, and outcomes.
+          </p>
+        </section>
+      </div>
+      <a class="case-study-back-link" href={homeUrl}>← Back to selected work</a>
+    </main>
+    <footer class="site-footer">
+      <p>© {new Date().getFullYear()} Pariram S</p>
+      <p>Designed with clarity and care.</p>
+    </footer>
+  </div>
+</BaseLayout>
+

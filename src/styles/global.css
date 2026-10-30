@@ -1,14 +1,14 @@
 :root {
   color-scheme: light;
-  --color-bg: #f7f8f5;
+  --color-bg: #fcfdfb;
   --color-surface: #ffffff;
   --color-text: #202824;
   --color-muted: #5d6962;
   --color-accent: #167d60;
   --color-accent-strong: #0f684e;
-  --color-border: #e8eae6;
-  --color-soft: #edf3ef;
-  --color-visual: #d9e9e1;
+  --color-border: #dce5df;
+  --color-soft: #eff6f1;
+  --color-visual: #d9eee3;
   --font-sans: "Inter", "Manrope", system-ui, sans-serif;
   --font-heading: "Manrope", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -694,9 +694,22 @@ html[data-theme="dark"] .theme-icon-moon {
 }
 
 .diagram-node {
+  fill: var(--color-surface);
+  stroke: color-mix(in srgb, var(--color-accent) 42%, var(--color-border));
+  stroke-width: 2;
+}
+
+.diagram-step {
   fill: var(--color-soft);
-  stroke: var(--color-border);
+  stroke: var(--color-accent);
   stroke-width: 1.5;
+}
+
+.diagram-step-number {
+  fill: var(--color-accent-strong);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
 }
 
 .diagram-label {
@@ -709,7 +722,7 @@ html[data-theme="dark"] .theme-icon-moon {
 .diagram-arrow {
   fill: none;
   stroke: var(--color-accent);
-  stroke-width: 2;
+  stroke-width: 3;
 }
 
 .diagram-arrow-head {

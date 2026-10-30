@@ -8,18 +8,18 @@ interface Props {
 
 const { id, title, description, nodes } = Astro.props;
 const nodeWidth = 164;
-const nodeHeight = 72;
+const nodeHeight = 92;
 const gap = 30;
 const startX = 16;
 const diagramWidth = startX * 2 + nodes.length * nodeWidth + (nodes.length - 1) * gap;
-const mobileRowHeight = 100;
+const mobileRowHeight = 120;
 const diagramHeight = 24 + nodes.length * mobileRowHeight;
 ---
 
 <figure class="architecture-figure">
   <svg
     class="diagram-wide"
-    viewBox={`0 0 ${diagramWidth} 160`}
+    viewBox={`0 0 ${diagramWidth} 176`}
     role="img"
     aria-labelledby={`diagram-title-${id}`}
     aria-describedby={`diagram-description-${id}`}
@@ -34,17 +34,19 @@ const diagramHeight = 24 + nodes.length * mobileRowHeight;
     {nodes.map((lines, index) => {
       const x = startX + index * (nodeWidth + gap);
       const centerX = x + nodeWidth / 2;
-      const firstLineY = lines.length > 1 ? 76 : 86;
+      const firstLineY = lines.length > 2 ? 101 : lines.length > 1 ? 107 : 116;
       return (
         <g>
           {index < nodes.length - 1 && (
             <path
-              d={`M ${x + nodeWidth + 4} 80 H ${x + nodeWidth + gap - 5}`}
+              d={`M ${x + nodeWidth + 4} 92 H ${x + nodeWidth + gap - 5}`}
               class="diagram-arrow"
               marker-end={`url(#arrow-wide-${id})`}
             />
           )}
-          <rect x={x} y="44" width={nodeWidth} height={nodeHeight} rx="14" class="diagram-node" />
+          <rect x={x} y="46" width={nodeWidth} height={nodeHeight} rx="14" class="diagram-node" />
+          <circle cx={x + 22} cy="66" r="11" class="diagram-step" />
+          <text x={x + 22} y="69.5" text-anchor="middle" class="diagram-step-number">{String(index + 1).padStart(2, '0')}</text>
           {lines.map((line, lineIndex) => (
             <text x={centerX} y={firstLineY + lineIndex * 20} text-anchor="middle" class="diagram-label">
               {line}
@@ -72,7 +74,7 @@ const diagramHeight = 24 + nodes.length * mobileRowHeight;
     {nodes.map((lines, index) => {
       const y = 12 + index * mobileRowHeight;
       const centerY = y + nodeHeight / 2;
-      const firstLineY = lines.length > 1 ? centerY - 7 : centerY + 5;
+      const firstLineY = lines.length > 2 ? centerY + 3 : lines.length > 1 ? centerY + 9 : centerY + 18;
       return (
         <g>
           {index < nodes.length - 1 && (
@@ -83,6 +85,8 @@ const diagramHeight = 24 + nodes.length * mobileRowHeight;
             />
           )}
           <rect x="20" y={y} width="320" height={nodeHeight} rx="14" class="diagram-node" />
+          <circle cx="44" cy={y + 20} r="11" class="diagram-step" />
+          <text x="44" y={y + 23.5} text-anchor="middle" class="diagram-step-number">{String(index + 1).padStart(2, '0')}</text>
           {lines.map((line, lineIndex) => (
             <text x="180" y={firstLineY + lineIndex * 20} text-anchor="middle" class="diagram-label">
               {line}

@@ -461,6 +461,129 @@ html[data-theme="dark"] .theme-icon-moon {
   color: var(--color-text);
 }
 
+.work-content {
+  display: grid;
+  gap: 2rem;
+}
+
+.work-intro {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.project-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: clamp(1.2rem, 3vw, 1.6rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+.project-card-featured:first-child {
+  grid-column: 1 / -1;
+}
+
+.project-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.project-category {
+  color: var(--color-accent-strong);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.project-index {
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+
+.project-title {
+  margin: 1rem 0 0;
+  font-family: var(--font-heading);
+  font-size: 1.28rem;
+  letter-spacing: -0.035em;
+  line-height: 1.25;
+}
+
+.project-title a {
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 150ms ease;
+}
+
+.project-title a:hover {
+  text-decoration-color: currentColor;
+}
+
+.project-summary {
+  margin: 0.7rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.91rem;
+}
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: auto 0 0;
+  padding: 1.2rem 0 0;
+  list-style: none;
+}
+
+.project-technologies li {
+  padding: 0.3rem 0.55rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.personal-projects {
+  display: grid;
+  gap: 1rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.personal-projects-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.personal-projects-heading h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+}
+
+.personal-projects-heading p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
+.project-grid-personal .project-card {
+  background: var(--color-bg);
+}
+
 .contact-panel {
   display: flex;
   flex-wrap: wrap;
@@ -553,6 +676,19 @@ html[data-theme="dark"] .theme-icon-moon {
     grid-template-columns: 1fr;
     gap: 0.8rem;
     padding-block: 3.5rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card-featured:first-child {
+    grid-column: auto;
+  }
+
+  .personal-projects-heading {
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
   .experience-card-header {

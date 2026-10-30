@@ -154,6 +154,14 @@ test('case studies explain project context, challenge, approach, and implementat
   }
 });
 
+test('homepage omits the unfinished writing section', async ({ page }) => {
+  await page.goto('./');
+  await expect(page.locator('#writing')).toHaveCount(0);
+  await expect(
+    page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Writing' }),
+  ).toHaveCount(0);
+});
+
 test('homepage makes featured case studies immediately discoverable', async ({ page }) => {
   await page.goto('./');
   const featured = page.locator('.hero-case-studies');

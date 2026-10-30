@@ -139,7 +139,7 @@ test('case studies explain project context, challenge, approach, and implementat
   const routes = [
     ['asynchronous-file-processing', 'decrypt'],
     ['secure-api-processing', '10 MB'],
-    ['event-driven-integration', 'retry mechanism'],
+    ['event-driven-integration', 'retried failed messages'],
   ];
 
   for (const [slug, detail] of routes) {
@@ -207,4 +207,21 @@ test('case study section links and diagram stages stay connected', async ({ page
 
   await page.locator('[data-flow-clear]').click();
   await expect(explanation).not.toHaveClass(/is-active/);
+});
+
+
+test('case studies use direct language and include known outcomes', async ({ page }) => {
+  const cases = [
+    ['asynchronous-file-processing', /near-instant access/i],
+    ['secure-api-processing', /millions of requests/i],
+    ['event-driven-integration', /candidate ingestion increased 50% and application ingestion increased 300%/i],
+  ];
+
+  for (const [slug, outcome] of cases) {
+    await page.goto(`./projects/${slug}/`);
+    await expect(
+      page.getByText(/original (?:portfolio )?(?:description|source)|the source (?:does not|describes|identifies|also mentions)/i),
+    ).toHaveCount(0);
+    await expect(page.getByText(outcome).first()).toBeVisible();
+  }
 });

@@ -534,6 +534,13 @@ html[data-theme="dark"] .theme-icon-moon {
   color: var(--color-muted);
 }
 
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
 .site-footer {
   display: flex;
   justify-content: space-between;

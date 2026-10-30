@@ -366,6 +366,76 @@ html[data-theme="dark"] .theme-icon-moon {
   font-size: 1.05rem;
 }
 
+.experience-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.experience-card {
+  padding: clamp(1.2rem, 3vw, 1.75rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+.experience-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.experience-card h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  letter-spacing: -0.025em;
+}
+
+.experience-company {
+  margin: 0.15rem 0 0;
+  color: var(--color-accent-strong);
+  font-weight: 650;
+}
+
+.experience-period {
+  margin: 0;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-align: right;
+}
+
+.experience-location {
+  margin: 0.8rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.83rem;
+}
+
+.experience-highlights {
+  display: grid;
+  gap: 0.55rem;
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+}
+
+.experience-highlights li::marker {
+  color: var(--color-accent);
+}
+
+.current-role {
+  display: inline-block;
+  margin-top: 0.45rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--color-soft);
+  color: var(--color-accent-strong);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
 .section-aside {
   display: flex;
   flex-wrap: wrap;
@@ -483,6 +553,15 @@ html[data-theme="dark"] .theme-icon-moon {
     grid-template-columns: 1fr;
     gap: 0.8rem;
     padding-block: 3.5rem;
+  }
+
+  .experience-card-header {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .experience-period {
+    text-align: left;
   }
 
   .site-footer {

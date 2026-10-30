@@ -2,6 +2,7 @@ export interface ProjectRecord {
   title: string;
   summary: string;
   technologies: string[];
+  caseStudySlug?: string;
   repositoryUrl?: string;
 }
 
@@ -11,18 +12,21 @@ export const featuredProjects: ProjectRecord[] = [
     summary:
       'An event-driven pipeline for handling large compressed and encrypted files, with asynchronous multipart uploads to S3.',
     technologies: ['Java', 'AWS Lambda', 'Amazon SQS', 'Amazon S3'],
+    caseStudySlug: 'asynchronous-file-processing',
   },
   {
     title: 'Secure API Processing',
     summary:
       'API workflows with request validation, AWS API Gateway and WAF, tenant-aware S3 storage, and asynchronous processing.',
     technologies: ['Java', 'AWS API Gateway', 'AWS WAF', 'Amazon S3'],
+    caseStudySlug: 'secure-api-processing',
   },
   {
     title: 'Event-Driven Integration',
     summary:
       'Middleware that transforms third-party API data and routes messages to destination applications with retry handling.',
     technologies: ['Java', 'MuleSoft', 'Amazon SQS', 'ActiveMQ'],
+    caseStudySlug: 'event-driven-integration',
   },
 ];
 

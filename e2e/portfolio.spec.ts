@@ -121,6 +121,7 @@ test('case studies explain project context, challenge, approach, and implementat
     await expect(page.getByRole('heading', { name: 'End-to-end flow' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Technical details' })).toBeVisible();
     await expect(page.getByText(new RegExp(detail, 'i')).first()).toBeVisible();
+    await expect(page.getByText(/unpublished metrics or outcomes/i)).toHaveCount(0);
   }
 });
 

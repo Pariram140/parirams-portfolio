@@ -26,6 +26,23 @@ test('homepage links to each case study under the project-site base path', async
   }
 });
 
+test('contact section offers direct email, LinkedIn, and GitHub links', async ({ page }) => {
+  await page.goto('./');
+  const contact = page.locator('#contact');
+  await expect(contact.getByRole('link', { name: 'pari.pariram.ram@gmail.com' })).toHaveAttribute(
+    'href',
+    'mailto:pari.pariram.ram@gmail.com',
+  );
+  await expect(contact.getByRole('link', { name: /LinkedIn/ })).toHaveAttribute(
+    'href',
+    'https://www.linkedin.com/in/pariram-s-a2367a160',
+  );
+  await expect(contact.getByRole('link', { name: /GitHub/ })).toHaveAttribute(
+    'href',
+    'https://github.com/Pariram140',
+  );
+});
+
 test('homepage and case study metadata use canonical project-site URLs', async ({ page }) => {
   await page.goto('./');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(

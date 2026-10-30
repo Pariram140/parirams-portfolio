@@ -132,6 +132,11 @@ test('case studies explain project context, challenge, approach, and implementat
 
 test('homepage makes featured case studies immediately discoverable', async ({ page }) => {
   await page.goto('./');
+  await expect(page.locator('#writing')).toHaveCount(0);
+  await expect(
+    page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Writing' }),
+  ).toHaveCount(0);
+
   const featured = page.locator('.hero-case-studies');
   await expect(page.locator('.hero-visual')).toHaveCount(0);
   await expect(featured.getByText('Featured case studies')).toBeVisible();

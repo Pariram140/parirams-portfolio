@@ -617,6 +617,132 @@ html[data-theme="dark"] .theme-icon-moon {
   margin: 0;
 }
 
+.case-study-main {
+  padding-block: clamp(2rem, 5vw, 4rem) clamp(4rem, 8vw, 7rem);
+}
+
+.case-study-breadcrumb,
+.case-study-back-link {
+  color: var(--color-accent-strong);
+  font-size: 0.88rem;
+  font-weight: 650;
+  text-underline-offset: 0.2em;
+}
+
+.case-study-hero {
+  max-width: 52rem;
+  padding-block: clamp(3rem, 7vw, 6rem);
+}
+
+.case-study-hero h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  letter-spacing: -0.055em;
+  line-height: 1.08;
+}
+
+.case-study-summary {
+  max-width: 43rem;
+  margin: 1.2rem 0 0;
+  color: var(--color-muted);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+}
+
+.case-study-content {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.case-study-section {
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.case-study-section h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  letter-spacing: -0.04em;
+}
+
+.case-study-section > p {
+  max-width: 54rem;
+  color: var(--color-muted);
+}
+
+.architecture-figure {
+  margin: 1.5rem 0 0;
+  padding: clamp(1rem, 3vw, 2rem);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+.diagram-wide,
+.diagram-tall {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.diagram-tall {
+  display: none;
+  max-width: 28rem;
+  margin-inline: auto;
+}
+
+.diagram-node {
+  fill: var(--color-soft);
+  stroke: var(--color-border);
+  stroke-width: 1.5;
+}
+
+.diagram-label {
+  fill: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.diagram-arrow {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2;
+}
+
+.diagram-arrow-head {
+  fill: var(--color-accent);
+}
+
+.architecture-figure figcaption,
+.case-study-source-note {
+  margin-top: 1rem;
+  color: var(--color-muted);
+  font-size: 0.83rem;
+}
+
+.case-study-facts {
+  display: grid;
+  gap: 0.7rem;
+  padding-left: 1.2rem;
+  color: var(--color-muted);
+}
+
+.case-study-facts li::marker {
+  color: var(--color-accent);
+}
+
+.case-study-source-note {
+  max-width: 48rem;
+}
+
+.case-study-back-link {
+  display: inline-block;
+  margin-top: 2rem;
+}
+
 @media (max-width: 850px) {
   .site-header {
     min-height: 5rem;
@@ -702,6 +828,16 @@ html[data-theme="dark"] .theme-icon-moon {
 
   .site-footer {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 700px) {
+  .diagram-wide {
+    display: none;
+  }
+
+  .diagram-tall {
+    display: block;
   }
 }
 

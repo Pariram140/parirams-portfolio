@@ -14,7 +14,7 @@ const homeUrl = `${import.meta.env.BASE_URL}#work`;
 
 <BaseLayout title={`${study.title} — Pariram S`} description={study.summary}>
   <div id="top" class="wrap">
-    <SiteHeader />
+    <SiteHeader homeUrl={import.meta.env.BASE_URL} />
     <main id="main-content" class="case-study-main">
       <a class="case-study-breadcrumb" href={homeUrl}>← Selected work</a>
       <header class="case-study-hero">

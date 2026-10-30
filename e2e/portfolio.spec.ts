@@ -164,6 +164,8 @@ test('case study section links and diagram stages stay connected', async ({ page
   await diagramButton.focus();
   await page.keyboard.press('Space');
   await expect(explanationButton).toHaveAttribute('aria-pressed', 'false');
+  await page.keyboard.press('Space');
+  await expect(explanationButton).toHaveAttribute('aria-pressed', 'true');
 
   await page.locator('[data-flow-clear]').click();
   await expect(explanation).not.toHaveClass(/is-active/);

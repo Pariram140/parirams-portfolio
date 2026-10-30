@@ -1,0 +1,40 @@
+---
+const title = 'Portfolio foundation';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="A new Astro foundation for Pariram S's portfolio." />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main>
+      <h1>{title}</h1>
+      <p>The Astro application is ready for the portfolio implementation stories.</p>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(html) {
+    color-scheme: light;
+    font-family: system-ui, sans-serif;
+    background: #f7f8f5;
+    color: #202824;
+  }
+
+  main {
+    box-sizing: border-box;
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: clamp(2rem, 8vw, 6rem) 1.5rem;
+  }
+
+  h1 {
+    margin-bottom: 0.75rem;
+  }
+</style>
+

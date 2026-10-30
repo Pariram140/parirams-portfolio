@@ -37,7 +37,7 @@ const diagramHeight = 24 + nodes.length * mobileRowHeight;
       const centerX = x + nodeWidth / 2;
       const firstLineY = lines.length > 2 ? 101 : lines.length > 1 ? 107 : 116;
       return (
-        <g class="diagram-stage" data-diagram-stage={index} data-diagram-label={`Step ${index + 1}: ${lines.join(' ')}`}
+        <g class="diagram-stage" data-diagram-stage={index} data-diagram-label={`Step ${index + 1}: ${lines.join(' ')}`}>
           {index < nodes.length - 1 && (
             <path
               d={`M ${x + nodeWidth + 4} 92 H ${x + nodeWidth + gap - 5}`}
@@ -78,7 +78,7 @@ const diagramHeight = 24 + nodes.length * mobileRowHeight;
       const centerY = y + nodeHeight / 2;
       const firstLineY = lines.length > 2 ? centerY + 3 : lines.length > 1 ? centerY + 9 : centerY + 18;
       return (
-        <g class="diagram-stage" data-diagram-stage={index} data-diagram-label={`Step ${index + 1}: ${lines.join(' ')}`}
+        <g class="diagram-stage" data-diagram-stage={index} data-diagram-label={`Step ${index + 1}: ${lines.join(' ')}`}>
           {index < nodes.length - 1 && (
             <path
               d={`M 180 ${y + nodeHeight + 4} V ${y + mobileRowHeight - 7}`}

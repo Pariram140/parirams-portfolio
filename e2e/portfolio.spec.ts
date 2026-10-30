@@ -50,7 +50,9 @@ test('case study routes load directly and survive refresh', async ({ page }) => 
   for (const [slug, title] of routes) {
     await page.goto(`./projects/${slug}/`);
     await expect(page.getByRole('heading', { level: 1, name: title })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Work' })).toHaveAttribute(
+    await expect(
+      page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Work' }),
+    ).toHaveAttribute(
       'href',
       '/parirams-portfolio/#work',
     );

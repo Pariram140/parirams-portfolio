@@ -737,8 +737,7 @@ html[data-theme="dark"] .theme-icon-moon {
   fill: var(--color-accent);
 }
 
-.architecture-figure figcaption,
-.case-study-source-note {
+.architecture-figure figcaption {
   margin-top: 1rem;
   color: var(--color-muted);
   font-size: 0.83rem;
@@ -753,10 +752,6 @@ html[data-theme="dark"] .theme-icon-moon {
 
 .case-study-facts li::marker {
   color: var(--color-accent);
-}
-
-.case-study-source-note {
-  max-width: 48rem;
 }
 
 .case-study-back-link {

@@ -50,6 +50,17 @@ test('contact section offers direct email, LinkedIn, and GitHub links', async ({
   );
 });
 
+test('professional project cards use distinct visual cues', async ({ page }) => {
+  await page.goto('./');
+  const cards = page.locator('.project-grid[aria-label="Featured professional projects"] .project-card');
+  await expect(cards).toHaveCount(3);
+
+  const accentColors = await cards.evaluateAll((items) =>
+    items.map((item) => getComputedStyle(item, '::before').backgroundColor),
+  );
+  expect(new Set(accentColors).size).toBe(3);
+});
+
 test('homepage and case study metadata use canonical project-site URLs', async ({ page }) => {
   await page.goto('./');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(

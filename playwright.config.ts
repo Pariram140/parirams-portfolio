@@ -5,9 +5,9 @@ const baseURL = 'http://127.0.0.1:4321/parirams-portfolio/';
 export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,
-  forbidOnly: Boolean(process.env.CI),
-  retries: process.env.CI ? 1 : 0,
-  reporter: process.env.CI ? 'github' : 'list',
+  forbidOnly: true,
+  retries: 1,
+  reporter: 'list',
   use: {
     baseURL,
     trace: 'retain-on-failure',
@@ -16,7 +16,7 @@ export default defineConfig({
   webServer: {
     command: 'npm run preview -- --port 4321',
     url: baseURL,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
     timeout: 30_000,
   },
 });

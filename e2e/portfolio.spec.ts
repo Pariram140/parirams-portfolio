@@ -103,3 +103,21 @@ test('generated sitemap lists project routes under the base path', async ({ requ
   );
 });
 
+
+test('case studies explain project context, challenge, approach, and implementation details', async ({ page }) => {
+  const routes = [
+    ['asynchronous-file-processing', 'decrypt'],
+    ['secure-api-processing', '10 MB'],
+    ['event-driven-integration', 'retry mechanism'],
+  ];
+
+  for (const [slug, detail] of routes) {
+    await page.goto(`./projects/${slug}/`);
+    await expect(page.getByRole('heading', { name: 'Project context' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Engineering challenge' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Solution and design approach' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'End-to-end flow' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Technical details' })).toBeVisible();
+    await expect(page.getByText(new RegExp(detail, 'i')).first()).toBeVisible();
+  }
+});

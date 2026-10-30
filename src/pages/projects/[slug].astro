@@ -27,14 +27,32 @@ const homeUrl = `${import.meta.env.BASE_URL}#work`;
       </header>
 
       <div class="case-study-content">
-        <section class="case-study-section" aria-labelledby="overview-title">
-          <h2 id="overview-title">Overview</h2>
-          <p>{study.overview}</p>
+        <section class="case-study-section" aria-labelledby="context-title">
+          <h2 id="context-title">Project context</h2>
+          <p>{study.context}</p>
+        </section>
+
+        <section class="case-study-section" aria-labelledby="challenge-title">
+          <h2 id="challenge-title">Engineering challenge</h2>
+          <p>{study.challenge}</p>
+        </section>
+
+        <section class="case-study-section" aria-labelledby="approach-title">
+          <h2 id="approach-title">Solution and design approach</h2>
+          <p>{study.approach}</p>
         </section>
 
         <section class="case-study-section" aria-labelledby="flow-title">
-          <h2 id="flow-title">Architecture flow</h2>
+          <h2 id="flow-title">End-to-end flow</h2>
           <p>{study.flowDescription}</p>
+          <ol class="case-study-steps">
+            {study.flowSteps.map((step) => (
+              <li>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </li>
+            ))}
+          </ol>
           <ArchitectureDiagram
             id={study.slug}
             title={`${study.title} process flow`}
@@ -44,13 +62,13 @@ const homeUrl = `${import.meta.env.BASE_URL}#work`;
         </section>
 
         <section class="case-study-section" aria-labelledby="details-title">
-          <h2 id="details-title">What the public source describes</h2>
+          <h2 id="details-title">Technical details</h2>
           <ul class="case-study-facts">
-            {study.sourceFacts.map((fact) => <li>{fact}</li>)}
+            {study.engineeringDetails.map((detail) => <li>{detail}</li>)}
           </ul>
           <p class="case-study-source-note">
-            This summary uses only information already published in the portfolio repository. It
-            omits unverified implementation details, metrics, and outcomes.
+            This case study expands on details in the original public portfolio description. It does
+            not add unpublished metrics or outcomes.
           </p>
         </section>
       </div>
@@ -62,4 +80,3 @@ const homeUrl = `${import.meta.env.BASE_URL}#work`;
     </footer>
   </div>
 </BaseLayout>
-

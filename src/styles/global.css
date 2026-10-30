@@ -1000,3 +1000,137 @@ html[data-theme="dark"] .theme-icon-moon {
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
+
+.case-study-jump {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 2rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-surface);
+}
+
+.case-study-jump > span {
+  margin-right: 0.25rem;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.case-study-jump a {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: var(--color-soft);
+  color: var(--color-accent-strong);
+  font-size: 0.78rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.case-study-jump a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.case-study-flow-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-top: 1.2rem;
+}
+
+.case-study-flow-help {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.84rem;
+}
+
+.case-study-flow-clear,
+.case-study-step-control {
+  min-height: 2.3rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-accent-strong);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.case-study-flow-clear:hover,
+.case-study-step-control:hover {
+  border-color: var(--color-accent);
+  background: var(--color-soft);
+}
+
+.case-study-flow-clear[hidden],
+.case-study-step-control[hidden] {
+  display: none;
+}
+
+.case-study-step-control {
+  margin-top: 0.8rem;
+}
+
+.case-study-steps li.is-active {
+  border-color: var(--color-accent);
+  background: var(--color-soft);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 18%, transparent);
+}
+
+.diagram-stage {
+  cursor: pointer;
+  outline: none;
+}
+
+.diagram-stage .diagram-node {
+  transition: fill 150ms ease, stroke 150ms ease, stroke-width 150ms ease;
+}
+
+.diagram-stage.is-active .diagram-node,
+.diagram-stage:focus-visible .diagram-node {
+  fill: var(--color-soft);
+  stroke: var(--color-accent-strong);
+  stroke-width: 4;
+}
+
+.case-study-content:not([data-flow-interactive]) .diagram-stage {
+  cursor: default;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 620px) {
+  .case-study-jump {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-study-jump > span {
+    grid-column: 1 / -1;
+  }
+
+  .case-study-jump a {
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diagram-stage .diagram-node {
+    transition: none;
+  }
+}

@@ -1,40 +1,120 @@
 ---
-const title = 'Portfolio foundation';
+import SiteHeader from '../components/SiteHeader.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const focusAreas = ['Cloud systems', 'API design', 'Event-driven integration'];
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="A new Astro foundation for Pariram S's portfolio." />
-    <title>{title}</title>
-  </head>
-  <body>
-    <main>
-      <h1>{title}</h1>
-      <p>The Astro application is ready for the portfolio implementation stories.</p>
+<BaseLayout
+  title="Pariram S — Software Developer"
+  description="Software developer working across cloud systems, APIs, and event-driven integration."
+>
+  <div id="top" class="wrap">
+    <SiteHeader />
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow">Software Developer · Cloud &amp; Integration</p>
+          <h1 id="hero-title">Building reliable systems for <span>real work.</span></h1>
+          <p class="hero-copy">
+            I work across cloud platforms, APIs, and event-driven integration, with a focus on
+            software that stays clear, dependable, and useful.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">Explore selected work <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="#contact">Get in touch</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <span class="visual-tag visual-tag-one">cloud</span>
+          <span class="visual-tag visual-tag-two">systems</span>
+          <span class="visual-tag visual-tag-three">integration</span>
+          <span class="visual-tag visual-tag-four">APIs</span>
+          <div class="visual-core">P / S</div>
+        </div>
+      </section>
+
+      <section id="about" class="content-section" aria-labelledby="about-title">
+        <div>
+          <p class="section-kicker">01 / About</p>
+          <h2 id="about-title">Thoughtful engineering, from the first request to the final result.</h2>
+        </div>
+        <div>
+          <p class="section-copy">
+            I enjoy making complex workflows easier to understand and more dependable to operate.
+            My work spans backend services, cloud architecture, and integrations between systems.
+          </p>
+          <div class="section-aside" aria-label="Areas of focus">
+            {focusAreas.map((area) => <span class="topic-chip">{area}</span>)}
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="content-section" aria-labelledby="experience-title">
+        <div>
+          <p class="section-kicker">02 / Experience</p>
+          <h2 id="experience-title">Building systems that work together.</h2>
+        </div>
+        <div>
+          <p class="section-copy">
+            Experience across asynchronous file processing, event-driven integrations, and secure
+            API workflows. The detailed career timeline will follow in the next content story.
+          </p>
+        </div>
+      </section>
+
+      <section id="work" class="content-section" aria-labelledby="work-title">
+        <div>
+          <p class="section-kicker">03 / Selected work</p>
+          <h2 id="work-title">Engineering stories, told with context.</h2>
+        </div>
+        <div>
+          <p class="work-note">
+            Professional case studies are being prepared from verified project details. They will
+            cover the problem, architecture, trade-offs, and outcomes without exposing confidential
+            information.
+          </p>
+        </div>
+      </section>
+
+      <section id="writing" class="content-section" aria-labelledby="writing-title">
+        <div>
+          <p class="section-kicker">04 / Writing</p>
+          <h2 id="writing-title">Notes on ideas worth exploring.</h2>
+        </div>
+        <div>
+          <p class="section-copy">
+            Writing and learning on distributed systems, software design, and cloud technology will
+            be gathered here.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact" class="content-section" aria-labelledby="contact-title">
+        <div>
+          <p class="section-kicker">05 / Contact</p>
+          <h2 id="contact-title">Let’s talk about good engineering.</h2>
+        </div>
+        <div class="contact-panel">
+          <p>For professional conversations and project discussions, find me on GitHub.</p>
+          <a
+            class="button button-primary"
+            href="https://github.com/Pariram140"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Visit GitHub <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
     </main>
-  </body>
-</html>
 
-<style>
-  :global(html) {
-    color-scheme: light;
-    font-family: system-ui, sans-serif;
-    background: #f7f8f5;
-    color: #202824;
-  }
-
-  main {
-    box-sizing: border-box;
-    max-width: 48rem;
-    margin: 0 auto;
-    padding: clamp(2rem, 8vw, 6rem) 1.5rem;
-  }
-
-  h1 {
-    margin-bottom: 0.75rem;
-  }
-</style>
+    <footer class="site-footer">
+      <p>© {new Date().getFullYear()} Pariram S</p>
+      <p>Designed with clarity and care.</p>
+    </footer>
+  </div>
+</BaseLayout>
 

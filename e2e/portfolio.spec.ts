@@ -66,9 +66,11 @@ test('theme preference remains accessible and persists after reload', async ({ p
   await page.goto('./');
 
   const themeToggle = page.getByRole('button', { name: 'Switch to dark theme' });
+  await expect(themeToggle).toContainText('Light mode');
   await themeToggle.focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await expect(page.getByRole('button', { name: 'Switch to light theme' })).toContainText('Dark mode');
   await expect(page.getByRole('button', { name: 'Switch to light theme' })).toHaveAttribute(
     'aria-pressed',
     'true',
@@ -120,4 +122,21 @@ test('case studies explain project context, challenge, approach, and implementat
     await expect(page.getByRole('heading', { name: 'Technical details' })).toBeVisible();
     await expect(page.getByText(new RegExp(detail, 'i')).first()).toBeVisible();
   }
+});
+
+test('homepage makes featured case studies immediately discoverable', async ({ page }) => {
+  await page.goto('./');
+  const featured = page.locator('.hero-case-studies');
+  await expect(featured.getByText('Featured case studies')).toBeVisible();
+  await expect(featured.getByRole('link', { name: /Read case study/ })).toHaveCount(3);
+  await expect(featured.getByRole('link', { name: /Asynchronous File Processing/ })).toHaveAttribute(
+    'href',
+    '/parirams-portfolio/projects/asynchronous-file-processing/',
+  );
+  await expect(page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link').first())
+    .toHaveText('Work');
+  await expect(page.locator('#work').locator('xpath=preceding-sibling::section[1]')).toHaveAttribute(
+    'class',
+    /hero/,
+  );
 });

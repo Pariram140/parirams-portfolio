@@ -26,7 +26,15 @@ const homeUrl = `${import.meta.env.BASE_URL}#work`;
         </ul>
       </header>
 
-      <div class="case-study-content">
+      <nav class="case-study-jump" aria-label="Case study sections">
+        <span>Jump to</span>
+        <a href="#context-title">Context</a>
+        <a href="#challenge-title">Challenge</a>
+        <a href="#flow-title">End-to-end flow</a>
+        <a href="#details-title">Technical details</a>
+      </nav>
+
+      <div class="case-study-content" data-case-study-flow>
         <section class="case-study-section" aria-labelledby="context-title">
           <h2 id="context-title">Project context</h2>
           <p>{study.context}</p>
@@ -45,11 +53,26 @@ const homeUrl = `${import.meta.env.BASE_URL}#work`;
         <section class="case-study-section" aria-labelledby="flow-title">
           <h2 id="flow-title">End-to-end flow</h2>
           <p>{study.flowDescription}</p>
-          <ol class="case-study-steps">
-            {study.flowSteps.map((step) => (
-              <li>
+          <div class="case-study-flow-actions">
+            <p class="case-study-flow-help">Select a numbered diagram stage or its explanation to highlight both.</p>
+            <button class="case-study-flow-clear" type="button" data-flow-clear hidden>Clear highlight</button>
+          </div>
+          <p class="visually-hidden" role="status" aria-live="polite" data-flow-status></p>
+          <ol class="case-study-steps" aria-label="End-to-end processing steps">
+            {study.flowSteps.map((step, index) => (
+              <li data-flow-step={index}>
                 <h3>{step.title}</h3>
                 <p>{step.description}</p>
+                <button
+                  class="case-study-step-control"
+                  type="button"
+                  data-step-control={index}
+                  aria-label={`Highlight ${step.title} in the diagram`}
+                  aria-pressed="false"
+                  hidden
+                >
+                  Highlight in diagram
+                </button>
               </li>
             ))}
           </ol>

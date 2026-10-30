@@ -141,3 +141,30 @@ test('homepage makes featured case studies immediately discoverable', async ({ p
     /hero/,
   );
 });
+
+test('case study section links and diagram stages stay connected', async ({ page }) => {
+  await page.goto('./projects/asynchronous-file-processing/');
+
+  const sectionNav = page.getByRole('navigation', { name: 'Case study sections' });
+  await expect(sectionNav.getByRole('link')).toHaveCount(4);
+  await sectionNav.getByRole('link', { name: 'End-to-end flow' }).click();
+  await expect(page).toHaveURL(/#flow-title$/);
+
+  const explanation = page.locator('[data-flow-step="1"]');
+  const explanationButton = explanation.getByRole('button', { name: 'Highlight Download and decrypt in the diagram' });
+  await explanationButton.click();
+  await expect(explanationButton).toHaveAttribute('aria-pressed', 'true');
+  await expect(explanation).toHaveClass(/is-active/);
+  await expect(page.locator('.diagram-wide [data-diagram-stage="1"]:visible')).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+
+  const diagramButton = page.getByRole('button', { name: 'Step 2: Download and decrypt' });
+  await diagramButton.focus();
+  await page.keyboard.press('Space');
+  await expect(explanationButton).toHaveAttribute('aria-pressed', 'false');
+
+  await page.locator('[data-flow-clear]').click();
+  await expect(explanation).not.toHaveClass(/is-active/);
+});

@@ -19,6 +19,7 @@ const diagramHeight = 24 + nodes.length * mobileRowHeight;
 <figure class="architecture-figure">
   <svg
     class="diagram-wide"
+    data-flow-diagram={id}
     viewBox={`0 0 ${diagramWidth} 176`}
     role="img"
     aria-labelledby={`diagram-title-${id}`}
@@ -36,7 +37,7 @@ const diagramHeight = 24 + nodes.length * mobileRowHeight;
       const centerX = x + nodeWidth / 2;
       const firstLineY = lines.length > 2 ? 101 : lines.length > 1 ? 107 : 116;
       return (
-        <g>
+        <g class="diagram-stage" data-diagram-stage={index} data-diagram-label={`Step ${index + 1}: ${lines.join(' ')}`}
           {index < nodes.length - 1 && (
             <path
               d={`M ${x + nodeWidth + 4} 92 H ${x + nodeWidth + gap - 5}`}
@@ -59,6 +60,7 @@ const diagramHeight = 24 + nodes.length * mobileRowHeight;
 
   <svg
     class="diagram-tall"
+    data-flow-diagram={id}
     viewBox={`0 0 360 ${diagramHeight}`}
     role="img"
     aria-labelledby={`diagram-title-${id}-mobile`}
@@ -76,7 +78,7 @@ const diagramHeight = 24 + nodes.length * mobileRowHeight;
       const centerY = y + nodeHeight / 2;
       const firstLineY = lines.length > 2 ? centerY + 3 : lines.length > 1 ? centerY + 9 : centerY + 18;
       return (
-        <g>
+        <g class="diagram-stage" data-diagram-stage={index} data-diagram-label={`Step ${index + 1}: ${lines.join(' ')}`}
           {index < nodes.length - 1 && (
             <path
               d={`M 180 ${y + nodeHeight + 4} V ${y + mobileRowHeight - 7}`}
@@ -99,3 +101,65 @@ const diagramHeight = 24 + nodes.length * mobileRowHeight;
   <figcaption>{description}</figcaption>
 </figure>
 
+
+<script>
+  const flowRoot = document.querySelector<HTMLElement>('[data-case-study-flow]');
+
+  if (flowRoot && !flowRoot.dataset.flowInteractive) {
+    flowRoot.dataset.flowInteractive = 'true';
+
+    const stageSvgs = Array.from(flowRoot.querySelectorAll<SVGSVGElement>('[data-flow-diagram]'));
+    const diagramStages = Array.from(flowRoot.querySelectorAll<SVGGElement>('[data-diagram-stage]'));
+    const stepButtons = Array.from(flowRoot.querySelectorAll<HTMLButtonElement>('[data-step-control]'));
+    const clearButton = flowRoot.querySelector<HTMLButtonElement>('[data-flow-clear]');
+    const status = flowRoot.querySelector<HTMLElement>('[data-flow-status]');
+    let selectedIndex: number | null = null;
+
+    stageSvgs.forEach((svg) => svg.setAttribute('role', 'group'));
+
+    diagramStages.forEach((stage) => {
+      stage.setAttribute('role', 'button');
+      stage.setAttribute('tabindex', '0');
+      stage.setAttribute('aria-label', stage.dataset.diagramLabel ?? 'Select flow stage');
+      stage.setAttribute('aria-pressed', 'false');
+      stage.addEventListener('click', () => selectStage(Number(stage.dataset.diagramStage)));
+      stage.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          selectStage(Number(stage.dataset.diagramStage));
+        }
+      });
+    });
+
+    stepButtons.forEach((button) => {
+      button.hidden = false;
+      button.addEventListener('click', () => selectStage(Number(button.dataset.stepControl)));
+    });
+
+    clearButton?.addEventListener('click', () => selectStage(null));
+
+    function selectStage(index: number | null) {
+      selectedIndex = index === selectedIndex ? null : index;
+
+      diagramStages.forEach((stage) => {
+        const active = selectedIndex !== null && Number(stage.dataset.diagramStage) === selectedIndex;
+        stage.classList.toggle('is-active', active);
+        stage.setAttribute('aria-pressed', String(active));
+      });
+
+      stepButtons.forEach((button) => {
+        const active = selectedIndex !== null && Number(button.dataset.stepControl) === selectedIndex;
+        button.setAttribute('aria-pressed', String(active));
+        button.closest('[data-flow-step]')?.classList.toggle('is-active', active);
+      });
+
+      if (clearButton) clearButton.hidden = selectedIndex === null;
+      if (status) {
+        status.textContent =
+          selectedIndex === null
+            ? 'Step highlight cleared.'
+            : `Step ${selectedIndex + 1} highlighted in the diagram and explanation.`;
+      }
+    }
+  }
+</script>

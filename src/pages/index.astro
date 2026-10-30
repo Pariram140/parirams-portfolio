@@ -97,7 +97,13 @@ const focusAreas = ['Cloud systems', 'API design', 'Event-driven integration'];
                   <span class="project-category">Professional work</span>
                   <span class="project-index">0{index + 1}</span>
                 </div>
-                <h3 class="project-title">{project.title}</h3>
+                <h3 class="project-title">
+                  {project.caseStudySlug ? (
+                    <a href={`${import.meta.env.BASE_URL}projects/${project.caseStudySlug}/`}>
+                      {project.title} <span aria-hidden="true">↗</span>
+                    </a>
+                  ) : project.title}
+                </h3>
                 <p class="project-summary">{project.summary}</p>
                 <ul class="project-technologies" aria-label={`Technologies for ${project.title}`}>
                   {project.technologies.map((technology) => <li>{technology}</li>)}

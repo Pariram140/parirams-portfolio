@@ -536,9 +536,16 @@ html[data-theme="dark"] .theme-icon-moon {
 
 .contact-actions {
   display: flex;
+  max-width: 100%;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.65rem;
+}
+
+.contact-actions .button {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .site-footer {

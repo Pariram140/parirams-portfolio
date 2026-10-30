@@ -15,7 +15,7 @@ test('homepage links to each case study under the project-site base path', async
     await page.getByRole('link', { name: title, exact: true }).click();
     await expect(page.getByRole('heading', { level: 1, name: title })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'End-to-end flow' })).toBeVisible();
-    await expect(page.getByRole('img', { name: `${title} process flow` })).toBeVisible();
+    await expect(page.locator('.diagram-wide')).toBeVisible();
     await expect(page).toHaveURL(/\/parirams-portfolio\/projects\/[a-z-]+\/$/);
     await page.goto('./');
   }

@@ -1,15 +1,24 @@
+---
+interface Props {
+  homeUrl?: string;
+}
+
+const { homeUrl = '' } = Astro.props;
+const sectionUrl = (section: string) => (homeUrl ? `${homeUrl}#${section}` : `#${section}`);
+---
+
 <header class="site-header wrap">
-  <a class="brand" href="#top" aria-label="Pariram S, home">
+  <a class="brand" href={homeUrl || '#top'} aria-label="Pariram S, home">
     <span class="brand-mark" aria-hidden="true">P</span>
     <span>Pariram S</span>
   </a>
 
   <nav class="primary-nav" aria-label="Primary navigation">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#work">Work</a>
-    <a href="#writing">Writing</a>
-    <a href="#contact">Contact</a>
+    <a href={sectionUrl('about')}>About</a>
+    <a href={sectionUrl('experience')}>Experience</a>
+    <a href={sectionUrl('work')}>Work</a>
+    <a href={sectionUrl('writing')}>Writing</a>
+    <a href={sectionUrl('contact')}>Contact</a>
   </nav>
 
   <button

@@ -6,7 +6,7 @@
   "scripts": {
     "check": "astro check",
     "build": "astro build",
-    "lint": "eslint .",
+    "lint": "eslint src eslint.config.js playwright.config.ts e2e",
     "preview": "astro preview --host 127.0.0.1",
     "test:e2e": "playwright test"
   },

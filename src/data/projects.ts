@@ -10,21 +10,21 @@ export const featuredProjects: ProjectRecord[] = [
   {
     title: 'Asynchronous File Processing',
     summary:
-      'An event-driven pipeline for handling large compressed and encrypted files, with asynchronous multipart uploads to S3.',
+      'Near-real-time delivery of large, compressed, encrypted files to S3.',
     technologies: ['Java', 'AWS Lambda', 'Amazon SQS', 'Amazon S3'],
     caseStudySlug: 'asynchronous-file-processing',
   },
   {
     title: 'Secure API Processing',
     summary:
-      'API workflows with request validation, AWS API Gateway and WAF, tenant-aware S3 storage, and asynchronous processing.',
+      'Tenant-aware API processing with request validation and asynchronous ETL.',
     technologies: ['Java', 'AWS API Gateway', 'AWS WAF', 'Amazon S3'],
     caseStudySlug: 'secure-api-processing',
   },
   {
     title: 'Event-Driven Integration',
     summary:
-      'Middleware that transforms third-party API data and routes messages to destination applications with retry handling.',
+      'Configurable routing for third-party data, with retries for failed messages.',
     technologies: ['Java', 'MuleSoft', 'Amazon SQS', 'ActiveMQ'],
     caseStudySlug: 'event-driven-integration',
   },
@@ -33,13 +33,13 @@ export const featuredProjects: ProjectRecord[] = [
 export const personalProjects: ProjectRecord[] = [
   {
     title: 'Chess Game',
-    summary: 'A chess game with move validation and an interactive board.',
+    summary: 'React chess with legal-move validation.',
     technologies: ['React', 'JavaScript'],
     repositoryUrl: 'https://github.com/Pariram140/Chess-game',
   },
   {
     title: 'To Do App',
-    summary: 'A Flutter task manager for creating, editing, and completing tasks.',
+    summary: 'Flutter task manager with priorities, due dates, and completion tracking.',
     technologies: ['Flutter'],
     repositoryUrl: 'https://github.com/Pariram140/to-do-app',
   },

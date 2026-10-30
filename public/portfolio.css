@@ -9,6 +9,11 @@
   --color-border: #dce5df;
   --color-soft: #eff6f1;
   --color-visual: #d9eee3;
+  --project-accent-files: #167d60;
+  --project-accent-api: #4f7393;
+  --project-accent-integration: #a66b3b;
+  --project-accent-chess: #7665ad;
+  --project-accent-todo: #a55e76;
   --font-sans: "Inter", "Manrope", system-ui, sans-serif;
   --font-heading: "Manrope", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -28,6 +33,11 @@ html[data-theme="dark"] {
   --color-border: #303c35;
   --color-soft: #202e27;
   --color-visual: #315443;
+  --project-accent-files: #55b995;
+  --project-accent-api: #8bb8d5;
+  --project-accent-integration: #e5a977;
+  --project-accent-chess: #b7a4ef;
+  --project-accent-todo: #e89ab3;
   --shadow-card: 0 1.5rem 4rem rgb(0 0 0 / 24%);
 }
 
@@ -416,6 +426,40 @@ html[data-theme="dark"] .theme-icon-moon {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-surface);
+}
+
+.project-card::before {
+  display: block;
+  width: 2.8rem;
+  height: 0.24rem;
+  margin-bottom: 0.85rem;
+  border-radius: 999px;
+  background: var(--project-card-accent, var(--color-accent));
+  content: "";
+}
+
+.project-card-featured:first-child::before {
+  width: 3.6rem;
+}
+
+.project-grid .project-card:nth-child(1) {
+  --project-card-accent: var(--project-accent-files);
+}
+
+.project-grid .project-card:nth-child(2) {
+  --project-card-accent: var(--project-accent-api);
+}
+
+.project-grid .project-card:nth-child(3) {
+  --project-card-accent: var(--project-accent-integration);
+}
+
+.project-grid-personal .project-card:nth-child(1) {
+  --project-card-accent: var(--project-accent-chess);
+}
+
+.project-grid-personal .project-card:nth-child(2) {
+  --project-card-accent: var(--project-accent-todo);
 }
 
 .project-card-featured:first-child {

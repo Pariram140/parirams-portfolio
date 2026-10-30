@@ -11,7 +11,7 @@ export const experience: ExperienceRecord[] = [
   {
     role: 'SDE 2',
     company: 'PayPal',
-    period: 'Nov 2025 – Present',
+    period: 'Nov 2024 – Present',
     location: 'Chennai, India',
     current: true,
     highlights: [],
@@ -19,7 +19,7 @@ export const experience: ExperienceRecord[] = [
   {
     role: 'Software Developer M2',
     company: 'Symphony Talent',
-    period: 'May 2023 – Nov 2025',
+    period: 'May 2023 – Nov 2024',
     location: 'Bangalore, India',
     highlights: [
       'Implemented asynchronous processing for compressed, encrypted large files, moving results to S3 with Lambda, SQS, and multipart uploads.',

@@ -2,6 +2,7 @@
 import SiteHeader from '../components/SiteHeader.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { experience } from '../data/experience';
+import { featuredProjects, personalProjects } from '../data/projects';
 
 const focusAreas = ['Cloud systems', 'API design', 'Event-driven integration'];
 ---
@@ -85,12 +86,50 @@ const focusAreas = ['Cloud systems', 'API design', 'Event-driven integration'];
           <p class="section-kicker">03 / Selected work</p>
           <h2 id="work-title">Engineering stories, told with context.</h2>
         </div>
-        <div>
-          <p class="work-note">
-            Professional case studies are being prepared from verified project details. They will
-            cover the problem, architecture, trade-offs, and outcomes without exposing confidential
-            information.
+        <div class="work-content">
+          <p class="work-intro">
+            A selection of professional engineering work, followed by independent projects.
           </p>
+          <div class="project-grid" aria-label="Featured professional projects">
+            {featuredProjects.map((project, index) => (
+              <article class="project-card project-card-featured">
+                <div class="project-card-top">
+                  <span class="project-category">Professional work</span>
+                  <span class="project-index">0{index + 1}</span>
+                </div>
+                <h3 class="project-title">{project.title}</h3>
+                <p class="project-summary">{project.summary}</p>
+                <ul class="project-technologies" aria-label={`Technologies for ${project.title}`}>
+                  {project.technologies.map((technology) => <li>{technology}</li>)}
+                </ul>
+              </article>
+            ))}
+          </div>
+
+          <div class="personal-projects">
+            <div class="personal-projects-heading">
+              <h3>Personal projects</h3>
+              <p>Independent experiments and applications.</p>
+            </div>
+            <div class="project-grid project-grid-personal" aria-label="Personal projects">
+              {personalProjects.map((project) => (
+                <article class="project-card">
+                  <span class="project-category">Personal project</span>
+                  <h4 class="project-title">
+                    {project.repositoryUrl ? (
+                      <a href={project.repositoryUrl} target="_blank" rel="noreferrer">
+                        {project.title} <span aria-hidden="true">↗</span>
+                      </a>
+                    ) : project.title}
+                  </h4>
+                  <p class="project-summary">{project.summary}</p>
+                  <ul class="project-technologies" aria-label={`Technologies for ${project.title}`}>
+                    {project.technologies.map((technology) => <li>{technology}</li>)}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

@@ -10,6 +10,11 @@ test('homepage links to each case study under the project-site base path', async
   await page.goto('./');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Building reliable systems');
   await expect(page).toHaveURL(/\/parirams-portfolio\/$/);
+  await expect(page.locator('link[rel="stylesheet"]')).toHaveAttribute(
+    'href',
+    '/parirams-portfolio/portfolio.css',
+  );
+  await expect(page.locator('body')).toHaveCSS('font-family', /Inter/);
 
   for (const title of caseStudies) {
     await page.getByRole('link', { name: title, exact: true }).click();

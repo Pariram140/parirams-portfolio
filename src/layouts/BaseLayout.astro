@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f8f5" />
+    <title>{title}</title>
+    <script is:inline>
+      (() => {
+        let preference = null;
+        try {
+          preference = window.localStorage.getItem('portfolio-theme');
+        } catch {
+          // Theme switching remains available for this session if storage is unavailable.
+        }
+
+        const theme =
+          preference === 'light' || preference === 'dark'
+            ? preference
+            : window.matchMedia?.('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <slot />
+  </body>
+</html>
+

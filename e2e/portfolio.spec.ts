@@ -33,6 +33,13 @@ test('contact section offers direct email, LinkedIn, and GitHub links', async ({
     'href',
     'mailto:pari.pariram.ram@gmail.com',
   );
+  const resumeLink = contact.getByRole('link', { name: 'Download résumé (PDF)' });
+  await expect(resumeLink).toHaveAttribute('href', '/parirams-portfolio/resume.pdf');
+  await expect(resumeLink).toHaveAttribute('download', '');
+
+  const resumeResponse = await page.request.get('/parirams-portfolio/resume.pdf');
+  expect(resumeResponse.ok()).toBeTruthy();
+
   await expect(contact.getByRole('link', { name: /LinkedIn/ })).toHaveAttribute(
     'href',
     'https://www.linkedin.com/in/pariram-s-a2367a160',

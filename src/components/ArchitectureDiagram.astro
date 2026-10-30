@@ -1,0 +1,97 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  nodes: string[][];
+}
+
+const { id, title, description, nodes } = Astro.props;
+const nodeWidth = 164;
+const nodeHeight = 72;
+const gap = 30;
+const startX = 16;
+const diagramWidth = startX * 2 + nodes.length * nodeWidth + (nodes.length - 1) * gap;
+const mobileRowHeight = 100;
+const diagramHeight = 24 + nodes.length * mobileRowHeight;
+---
+
+<figure class="architecture-figure">
+  <svg
+    class="diagram-wide"
+    viewBox={`0 0 ${diagramWidth} 160`}
+    role="img"
+    aria-labelledby={`diagram-title-${id}`}
+    aria-describedby={`diagram-description-${id}`}
+  >
+    <title id={`diagram-title-${id}`}>{title}</title>
+    <desc id={`diagram-description-${id}`}>{description}</desc>
+    <defs>
+      <marker id={`arrow-wide-${id}`} markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+        <path d="M0 0 8 4 0 8Z" class="diagram-arrow-head" />
+      </marker>
+    </defs>
+    {nodes.map((lines, index) => {
+      const x = startX + index * (nodeWidth + gap);
+      const centerX = x + nodeWidth / 2;
+      const firstLineY = lines.length > 1 ? 76 : 86;
+      return (
+        <g>
+          {index < nodes.length - 1 && (
+            <path
+              d={`M ${x + nodeWidth + 4} 80 H ${x + nodeWidth + gap - 5}`}
+              class="diagram-arrow"
+              marker-end={`url(#arrow-wide-${id})`}
+            />
+          )}
+          <rect x={x} y="44" width={nodeWidth} height={nodeHeight} rx="14" class="diagram-node" />
+          {lines.map((line, lineIndex) => (
+            <text x={centerX} y={firstLineY + lineIndex * 20} text-anchor="middle" class="diagram-label">
+              {line}
+            </text>
+          ))}
+        </g>
+      );
+    })}
+  </svg>
+
+  <svg
+    class="diagram-tall"
+    viewBox={`0 0 360 ${diagramHeight}`}
+    role="img"
+    aria-labelledby={`diagram-title-${id}-mobile`}
+    aria-describedby={`diagram-description-${id}-mobile`}
+  >
+    <title id={`diagram-title-${id}-mobile`}>{title}</title>
+    <desc id={`diagram-description-${id}-mobile`}>{description}</desc>
+    <defs>
+      <marker id={`arrow-tall-${id}`} markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto">
+        <path d="M0 0 8 0 4 8Z" class="diagram-arrow-head" />
+      </marker>
+    </defs>
+    {nodes.map((lines, index) => {
+      const y = 12 + index * mobileRowHeight;
+      const centerY = y + nodeHeight / 2;
+      const firstLineY = lines.length > 1 ? centerY - 7 : centerY + 5;
+      return (
+        <g>
+          {index < nodes.length - 1 && (
+            <path
+              d={`M 180 ${y + nodeHeight + 4} V ${y + mobileRowHeight - 7}`}
+              class="diagram-arrow"
+              marker-end={`url(#arrow-tall-${id})`}
+            />
+          )}
+          <rect x="20" y={y} width="320" height={nodeHeight} rx="14" class="diagram-node" />
+          {lines.map((line, lineIndex) => (
+            <text x="180" y={firstLineY + lineIndex * 20} text-anchor="middle" class="diagram-label">
+              {line}
+            </text>
+          ))}
+        </g>
+      );
+    })}
+  </svg>
+  <figcaption>{description}</figcaption>
+</figure>
+

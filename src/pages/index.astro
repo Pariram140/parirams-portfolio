@@ -27,6 +27,19 @@ const focusAreas = ['Cloud systems', 'API design', 'Event-driven integration'];
             <a class="button button-primary" href="#work">Explore selected work <span aria-hidden="true">↗</span></a>
             <a class="button button-secondary" href="#contact">Get in touch</a>
           </div>
+          <div class="hero-case-studies">
+            <p class="hero-case-studies-heading">Featured case studies <span>Choose a story to explore</span></p>
+            <ul>
+              {featuredProjects.map((project) => (
+                <li>
+                  <a href={`${import.meta.env.BASE_URL}projects/${project.caseStudySlug}/`}>
+                    <strong>{project.title}</strong>
+                    <span>Read case study <span aria-hidden="true">→</span></span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div class="hero-visual" aria-hidden="true">
@@ -38,52 +51,9 @@ const focusAreas = ['Cloud systems', 'API design', 'Event-driven integration'];
         </div>
       </section>
 
-      <section id="about" class="content-section" aria-labelledby="about-title">
-        <div>
-          <p class="section-kicker">01 / About</p>
-          <h2 id="about-title">Thoughtful engineering, from the first request to the final result.</h2>
-        </div>
-        <div>
-          <p class="section-copy">
-            I enjoy making complex workflows easier to understand and more dependable to operate.
-            My work spans backend services, cloud architecture, and integrations between systems.
-          </p>
-          <div class="section-aside" aria-label="Areas of focus">
-            {focusAreas.map((area) => <span class="topic-chip">{area}</span>)}
-          </div>
-        </div>
-      </section>
-
-      <section id="experience" class="content-section" aria-labelledby="experience-title">
-        <div>
-          <p class="section-kicker">02 / Experience</p>
-          <h2 id="experience-title">Building systems that work together.</h2>
-        </div>
-        <div class="experience-list">
-          {experience.map((item) => (
-            <article class="experience-card">
-              <div class="experience-card-header">
-                <div>
-                  <h3>{item.role}</h3>
-                  <p class="experience-company">{item.company}</p>
-                  {item.current && <span class="current-role">Current role</span>}
-                </div>
-                <p class="experience-period">{item.period}</p>
-              </div>
-              <p class="experience-location">{item.location}</p>
-              {item.highlights.length > 0 && (
-                <ul class="experience-highlights">
-                  {item.highlights.map((highlight) => <li>{highlight}</li>)}
-                </ul>
-              )}
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section id="work" class="content-section" aria-labelledby="work-title">
         <div>
-          <p class="section-kicker">03 / Selected work</p>
+          <p class="section-kicker">01 / Selected work</p>
           <h2 id="work-title">Engineering stories, told with context.</h2>
         </div>
         <div class="work-content">
@@ -105,6 +75,9 @@ const focusAreas = ['Cloud systems', 'API design', 'Event-driven integration'];
                   ) : project.title}
                 </h3>
                 <p class="project-summary">{project.summary}</p>
+                <a class="case-study-card-link" href={`${import.meta.env.BASE_URL}projects/${project.caseStudySlug}/`}>
+                  Read case study <span aria-hidden="true">→</span>
+                </a>
                 <ul class="project-technologies" aria-label={`Technologies for ${project.title}`}>
                   {project.technologies.map((technology) => <li>{technology}</li>)}
                 </ul>
@@ -136,6 +109,49 @@ const focusAreas = ['Cloud systems', 'API design', 'Event-driven integration'];
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="about" class="content-section" aria-labelledby="about-title">
+        <div>
+          <p class="section-kicker">02 / About</p>
+          <h2 id="about-title">Thoughtful engineering, from the first request to the final result.</h2>
+        </div>
+        <div>
+          <p class="section-copy">
+            I enjoy making complex workflows easier to understand and more dependable to operate.
+            My work spans backend services, cloud architecture, and integrations between systems.
+          </p>
+          <div class="section-aside" aria-label="Areas of focus">
+            {focusAreas.map((area) => <span class="topic-chip">{area}</span>)}
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="content-section" aria-labelledby="experience-title">
+        <div>
+          <p class="section-kicker">03 / Experience</p>
+          <h2 id="experience-title">Building systems that work together.</h2>
+        </div>
+        <div class="experience-list">
+          {experience.map((item) => (
+            <article class="experience-card">
+              <div class="experience-card-header">
+                <div>
+                  <h3>{item.role}</h3>
+                  <p class="experience-company">{item.company}</p>
+                  {item.current && <span class="current-role">Current role</span>}
+                </div>
+                <p class="experience-period">{item.period}</p>
+              </div>
+              <p class="experience-location">{item.location}</p>
+              {item.highlights.length > 0 && (
+                <ul class="experience-highlights">
+                  {item.highlights.map((highlight) => <li>{highlight}</li>)}
+                </ul>
+              )}
+            </article>
+          ))}
         </div>
       </section>
 
